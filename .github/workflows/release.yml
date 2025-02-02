@@ -17,8 +17,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Download certificate
         run: |
-          echo $SSL_CERT > server.crt
-          echo $SSL_KEY > server.key
+          echo $SSL_CERT | base64 --decode > server.crt
+          echo $SSL_KEY | base64 --decode > server.key
         shell: bash
         env:
           SSL_CERT: ${{secrets.SSL_CERT}}
